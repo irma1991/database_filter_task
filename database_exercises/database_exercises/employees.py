@@ -70,13 +70,13 @@ def get_employees_task7():
     query_database(query)
 
 
-get_employees_task1()
-get_employees_task2()
-get_employees_task3()
-get_employees_task4()
-get_employees_task5()
-get_employees_task6()
-get_employees_task7()
+# get_employees_task1()
+# get_employees_task2()
+# get_employees_task3()
+# get_employees_task4()
+# get_employees_task5()
+# get_employees_task6()
+# get_employees_task7()
 
 # 2nd part tasks
 
@@ -142,14 +142,59 @@ def get_employees_2nd_task11():
     query_database(query)
 
 
-get_employees_2nd_task1()
-get_employees_2nd_task2()
-get_employees_2nd_task3()
-get_employees_2nd_task4()
-get_employees_2nd_task5()
-get_employees_2nd_task6()
-get_employees_2nd_task7()
-get_employees_2nd_task8()
-get_employees_2nd_task9()
-get_employees_2nd_task10()
-get_employees_2nd_task11()
+# get_employees_2nd_task1()
+# get_employees_2nd_task2()
+# get_employees_2nd_task3()
+# get_employees_2nd_task4()
+# get_employees_2nd_task5()
+# get_employees_2nd_task6()
+# get_employees_2nd_task7()
+# get_employees_2nd_task8()
+# get_employees_2nd_task9()
+# get_employees_2nd_task10()
+# get_employees_2nd_task11()
+
+def create_names_view():
+    query = """ CREATE VIEW IF NOT EXISTS names
+                AS SELECT
+                first_name,
+                last_name
+                FROM employees"""
+
+    query_database(query)
+    query_database("SELECT * FROM names")
+
+# create_names_view()
+
+# 3nd part tasks
+
+# 3nd part task 1
+def get_employees_3nd_task1():
+    query = """ SELECT first_name, last_name, salary
+                FROM employees
+                WHERE salary > (SELECT salary FROM employees WHERE last_name = 'Bull')"""
+
+    query_database(query)
+
+# get_employees_3nd_task1()
+
+
+# 3nd part task 2
+def get_employees_3nd_task2():
+    query = """ SELECT first_name, last_name, employee_id, manager_id, job_id
+            FROM employees
+            WHERE (employee_id IN (SELECT manager_id FROM employees))"""
+
+    query_database(query)
+
+# get_employees_3nd_task2()
+
+# 3nd part task 3
+def get_employees_3nd_task3():
+    query = """ SELECT first_name, last_name, salary
+                FROM employees
+                WHERE salary > (SELECT AVG(salary) FROM employees)"""
+
+    query_database(query)
+
+get_employees_3nd_task3()
