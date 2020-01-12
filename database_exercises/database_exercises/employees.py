@@ -197,4 +197,15 @@ def get_employees_3nd_task3():
 
     query_database(query)
 
-get_employees_3nd_task3()
+# get_employees_3nd_task3()
+
+# 3nd part task 7
+def get_employees_3nd_task7():
+    query = """ SELECT first_name, last_name FROM employees
+                WHERE manager_id IN (SELECT employee_id FROM employees
+                WHERE department_id IN (SELECT department_id FROM departments
+                WHERE location_id IN (SELECT location_id FROM locations WHERE country_id = 'US')))"""
+
+    query_database(query)
+
+get_employees_3nd_task7()
