@@ -178,7 +178,6 @@ def get_employees_3nd_task1():
 
 # get_employees_3nd_task1()
 
-
 # 3nd part task 2
 def get_employees_3nd_task2():
     query = """ SELECT first_name, last_name, employee_id, manager_id, job_id
@@ -199,6 +198,39 @@ def get_employees_3nd_task3():
 
 # get_employees_3nd_task3()
 
+# 3nd part task 4
+def get_employees_3nd_task4():
+    query = """ SELECT first_name, last_name, salary
+            FROM employees
+            WHERE salary = (SELECT min_salary FROM jobs
+            WHERE employees.job_id = jobs.job_id)"""
+
+    query_database(query)
+
+#get_employees_3nd_task4()
+
+# 3nd part task 5
+def get_employees_3nd_task5():
+    query = """ SELECT first_name, last_name, salary
+                FROM employees
+                WHERE department_id IN (SELECT department_id FROM departments
+                WHERE depart_name LIKE 'IT%' AND
+                salary > (SELECT AVG(salary) from employees))"""
+
+    query_database(query)
+
+get_employees_3nd_task5()
+
+# 3nd part task 6
+def get_employees_3nd_task6():
+    query = """ SELECT first_name, last_name, salary
+                FROM employees
+                WHERE salary IN (SELECT salary FROM employees ORDER BY salary desc limit 3)"""
+
+    query_database(query)
+
+#get_employees_3nd_task6()
+
 # 3nd part task 7
 def get_employees_3nd_task7():
     query = """ SELECT first_name, last_name FROM employees
@@ -208,4 +240,4 @@ def get_employees_3nd_task7():
 
     query_database(query)
 
-get_employees_3nd_task7()
+#get_employees_3nd_task7()
